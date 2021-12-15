@@ -5,15 +5,10 @@ Uma versão minimalista da API Space Flight News, em resposta ao desafio da Cood
 Utilizando o framework FastAPI para responder às seguintes rotas:
 
     [GET] / 
-
     [GET] /articles/
- 
     [GET] /articles/{id}
-
     [POST] /articles/
-
     [PUT] /articles/{id}
-
     [DELETE] /articles/{id}
 
 Para povoar a base de dados e recuperar o histórico de artigos publicados na Spaceflight News API, é muito fácil com o SFNEWS. 
@@ -24,29 +19,30 @@ populate.py
 
 Pronto, apenas um arquivo para povoar a base de dados. Agora agende para sincronização diária, adicionando a seguinte linha ao crontab:
 
-* * * x x - /usr/local/share/populate.py >> data.log
+0    9    *    *    *    populate.py
 
-Este comando também escreverá mensagens de erro para notificação no arquivo de log. 
-
-Não esqueça de trocar o diretório /usr/local/share/ para o diretório do SFNEWS.
-
-Não se esqueça também de configurar a base de dados antes de rodar o comando. 
-
+Não se esqueça de configurar a base de dados antes de rodar o comando. 
 Se a sua base de dados estiver configurada, receberá os seguinte retorno:
 
 [SFNEWS] Banco de dados alimentado.
 
 Dúvidas sobre a configuração do banco de dados, consulte o arquivo INSTALL
-
 Caso algum erro aconteça na sincronização, então o erro será escrito no arquivo data.log
-
 Por fim, rodando o servidor de API com o uvicorn:
 
 $ uvicorn main:app --reload
 INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 
 Pronto. Agora o servidor está operando e permitindo o consumo de dados para nossa api.
-
 E assim apresentamos nossa solução para o BGack end Challenge 2021, ainda que simplificando o modelo para cumprimento do prazo.
 
 Agradecimentos à Quetlin pelo encaminhamento do teste técnico.
+
+---
+
+Linguagens e principais tecnologias utilizadas:
+
+Python
+FastAPI
+Django
+PostgreSQL
